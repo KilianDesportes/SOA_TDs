@@ -1,0 +1,20 @@
+package fr.insa.soa.RestProject;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("stage")
+public class StageRessource {
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Stage getStage(int idEtudiant) {
+		Stage stage = new Stage();
+		stage.setEvaluation(16);
+		stage.setCompetences("SOA, Rest");
+		return stage;
+	}
+	
+}

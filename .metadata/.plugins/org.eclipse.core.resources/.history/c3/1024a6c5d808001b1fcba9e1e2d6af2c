@@ -1,0 +1,51 @@
+package fr.insa.msa.StudentEvalService.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentInfos {
+
+	private int id;
+	private String birthDate;
+	private String lastName;
+	private String firstName;
+	
+	public StudentInfos(int id, String birthDate, String lastName, String firstName) {
+		this.id = id;
+		this.birthDate = birthDate;
+		this.lastName = lastName;
+		this.firstName = firstName;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getBirthDate() {
+		return id;
+	}
+	
+	public void setBirthDate(int id) {
+		this.id = id;
+	}
+	
+	public int getLastName() {
+		return id;
+	}
+	
+	public void setLastName(int id) {
+		this.id = id;
+	}
+	
+	public int getFirstName() {
+		return id;
+	}
+	
+	public void setFirstName(int id) {
+		this.id = id;
+	}
+}

@@ -1,0 +1,21 @@
+package org.example.www.comparateurws;
+
+public class TestComparateur {
+
+	public static void main(String[] args) {
+		
+		ComparateurWSStub comparateurWS = new ComparateurWSStub();
+		
+		CompareRequestType requestType = new CompareRequestType();
+		requestType.setChaine("aabbbccc");
+		requestType.setSousChaine("bbb");
+	
+
+		CompareRequest request = new CompareRequest();
+		request.setCompareRequest(requestType);
+		
+		CompareResponse response = comparateurWS.compare(request);
+		System.out.println("La sous chaine se trouve à " + (response.getPositionSousChaine()+1));
+	}
+
+}

@@ -1,0 +1,10 @@
+package fr.insa.soa.RestDatabaseService;
+
+import java.util.ArrayList;
+
+public class Database {
+
+	private ArrayList<Task> database;
+	
+	
+}

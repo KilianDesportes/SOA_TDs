@@ -1,0 +1,58 @@
+package fr.insa.mas.studentManagementMS;
+
+import java.util.ArrayList;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import fr.insa.soa.RestDatabaseService.Task;
+
+@RestController
+public class StudentRessource {
+
+	private static ArrayList<Student> studentList = new ArrayList<Student>();
+	
+	@GetMapping(value="/students/get/{id}")
+	public Student infosStudent(@PathVariable int id) {
+		Student student = studentList.get(id);
+		return student;
+	}
+	
+	@PostMapping("/students/post")
+	public void addStudent(@RequestBody Student student) {
+		studentList.add(student.getID(), student);
+	}
+	
+	@PutMapping("/students/update/{id}")
+	public void updateStudent(@PathVariable int id,@RequestBody Student student) {
+		studentList.remove(id);
+		addStudent(student);
+	}
+	
+	@DeleteMapping("/students/delete/{id}")
+	public void deleteStudent(@PathVariable int id) {
+		studentList.remove(id);
+	}
+	
+	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_XML_VALUE)
+	public Student xmlInfosStudents(@PathVariable int id) {
+		Student student = new Student(id,"Rosa","Parks");
+		return student;
+	}
+	
+	private void printDatabase(ArrayList<Task> database) {
+		if(database.size() == 0) {
+			System.out.println("Empty database");
+		}
+		for(int i = 0 ; i < database.size(); i++) {
+			System.out.println("Title " + i + " : " + database.get(i).getTitle());
+			System.out.println("TaskM " + i + " : " + database.get(i).getTaskManager());
+		}
+	}
+}

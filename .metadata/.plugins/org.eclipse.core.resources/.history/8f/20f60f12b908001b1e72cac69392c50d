@@ -1,0 +1,69 @@
+package fr.insa.mas.studentManagementMS;
+
+import java.util.ArrayList;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class StudentRessource {
+
+	private static ArrayList<Student> studentList = new ArrayList<Student>();
+	
+	@GetMapping(value="/students/get/{id}",produces=MediaType.APPLICATION_XML_VALUE)
+	public Student infosStudent(@PathVariable int id) {
+		Student student = studentList.get(id);
+		return student;
+	}
+	
+	@PostMapping("/students/post")
+	public void addStudent(@RequestBody Student student) {
+		studentList.add(student.getID(), student);
+		System.out.println("addStudent");
+		printList(studentList);
+	}
+	
+	@PutMapping("/students/update/{id}")
+	public void updateStudent(@PathVariable int id,@RequestBody Student student) {
+		studentList.remove(id);
+		addStudent(student);
+		System.out.println("updateStudent");
+		printList(studentList);
+	}
+	
+	@DeleteMapping("/students/delete/{id}")
+	public void deleteStudent(@PathVariable int id) {
+		studentList.remove(id);
+		System.out.println("deleteStudent");
+		printList(studentList);
+	}
+	
+	@GetMapping(value="students")
+	public int test() {
+		return 200;
+	}
+	
+	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_XML_VALUE)
+	public Student xmlInfosStudents(@PathVariable int id) {
+		Student student = new Student(id,"Rosa","Parks");
+		return student;
+	}
+	
+	private void printList(ArrayList<Student> list) {
+		if(list.size() == 0) {
+			System.out.println("Empty list");
+		}
+		for(int i = 0 ; i < list.size(); i++) {
+			System.out.println("id " + i + " : " + list.get(i).getID());
+			System.out.println("firstName " + i + " : " + list.get(i).getFirstName());
+			System.out.println("lastName " + i + " : " + list.get(i).getLastName());
+
+		}
+	}
+}

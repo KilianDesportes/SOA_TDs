@@ -1,0 +1,27 @@
+package fr.insa.soa.RestDatabaseService;
+
+public class Task {
+
+	private String title;
+	private String taskManager;
+
+	public Task() {
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setTaskManager(String taskManager) {
+		this.taskManager = taskManager;
+	}
+
+	public String getTitle() {
+		return this.title;
+	}
+
+	public String getTaskManager() {
+		return this.taskManager;
+	}
+
+}

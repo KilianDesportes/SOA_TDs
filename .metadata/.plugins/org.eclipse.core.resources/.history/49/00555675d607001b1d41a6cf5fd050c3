@@ -1,0 +1,51 @@
+package fr.insa.soa.RestDatabaseService;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("databaseOperations")
+public class DatabaseOperations {
+
+	private Database datab = new Database();
+
+	@GET
+	@Path("search/{idTask}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Task search(@PathParam("idTask") int id) {
+		return datab.searchTask(id);
+	}
+
+	@POST
+	@Path("add")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void add(Task task) {
+		datab.addTask(task);
+		System.out.println("added");
+		datab.printDatabase();
+	}
+
+	@DELETE
+	@Path("delete/{idTask}")
+	@Consumes(MediaType.TEXT_PLAIN)
+	public void delete(int id) {
+		datab.deleteTask(id);
+		System.out.println("deleted");
+		datab.printDatabase();
+	}
+
+	@PUT
+	@Path("update/{idTask}")
+	@Consumes(MediaType.TEXT_PLAIN,MediaType.APPLICATION_JSON)
+	public void update(Task task, @PathParam("idTask") int id) {
+		datab.deleteTask(id);
+		System.out.println("updated");
+		datab.printDatabase();
+	}
+
+}

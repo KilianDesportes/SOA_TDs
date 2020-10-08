@@ -1,0 +1,5 @@
+package fr.insa.msa.StudentsListService.model;
+
+public class Student {
+
+}

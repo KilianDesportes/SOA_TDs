@@ -1,0 +1,8 @@
+package fr.insa.soa.RestDatabaseService;
+
+public class Database {
+
+	private ArrayList<Task> database;
+	
+	
+}

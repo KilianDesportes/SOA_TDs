@@ -1,0 +1,26 @@
+package fr.insa.soa.RestDatabaseService;
+
+import java.util.ArrayList;
+
+public class Database {
+
+	private ArrayList<Task> database;
+	
+	public Task searchTask(int id) {
+		return data
+	}
+	
+	public void addTask(Task task) {
+		
+	}
+	
+
+	
+	public void addTask(Task task) {
+		
+	}
+	
+	public void updateTask(Task task, ) {
+		
+	}
+}

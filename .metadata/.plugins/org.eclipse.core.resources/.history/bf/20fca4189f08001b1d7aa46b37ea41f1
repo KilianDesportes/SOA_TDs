@@ -1,0 +1,7 @@
+package fr.insa.mas.studentManagementMS;
+
+import org.springframework.web.bind.annotation.RestController;
+
+public class StudentRessource {
+
+}

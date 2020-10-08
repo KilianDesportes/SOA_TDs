@@ -1,0 +1,21 @@
+package fr.insa.msa.StudentsListService.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentIDList {
+
+	List<Integer> studentList;
+	
+	public StudentIDList() {
+		this.studentList = new ArrayList<Integer>();
+	}
+	
+	public List<Integer> getStudentList(){
+		return this.studentList;
+	}
+	
+	public void saddStudentToList(Integer studentId) {
+		this.studentList.add(studentId);
+	}
+}

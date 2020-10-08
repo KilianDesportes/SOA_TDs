@@ -1,0 +1,7 @@
+package fr.insa.msa.studentslistservice.resources;
+
+@RestController
+@RequestMapping("/students")
+public class StudentListResource {
+
+}

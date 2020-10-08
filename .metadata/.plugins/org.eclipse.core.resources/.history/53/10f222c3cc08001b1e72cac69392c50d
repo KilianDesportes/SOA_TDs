@@ -1,0 +1,25 @@
+package fr.insa.msa.StudentsListService.resources;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import fr.insa.msa.StudentsListService.model.StudentIDList;
+
+@RestController
+public class StudentListResource {
+
+	@GetMapping(value="/students/ids/{idSpeciality}",produces=MediaType.APPLICATION_XML_VALUE)
+	public StudentIDList getIDStudents(@PathVariable("idSpeciality")  String speciality) {
+		
+		StudentIDList studentsId = new StudentIDList();
+		studentsId.saddStudentToList(0);
+		studentsId.saddStudentToList(1);
+		studentsId.saddStudentToList(2);
+		studentsId.saddStudentToList(3);
+		
+		return studentsId;
+	}
+}

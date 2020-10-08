@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/ComparateurWS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ComparateurWS" targetNamespace="http://www.example.org/ComparateurWS/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/ComparateurWS/">
+      <xsd:element name="compare">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="compareResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="compareRequest"
+      	type="tns:compareRequestType">
+      </xsd:element>
+
+      <xsd:complexType name="compareRequestType">
+      	<xsd:sequence>
+      		<xsd:element name="chaine" type="xsd:string"></xsd:element>
+      		<xsd:element name="sousChaine" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="compareRequest">
+    <wsdl:part element="tns:compareRequest" name="parameters" />
+  </wsdl:message>
+  <wsdl:message name="compareResponse">
+    <wsdl:part element="tns:compareResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="ComparateurWSPortType">
+    <wsdl:operation name="compare">
+      <wsdl:input message="tns:compareRequest"/>
+      <wsdl:output message="tns:compareResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ComparateurWSBinding" type="tns:ComparateurWSPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="compare">
+      <soap:operation soapAction="http://www.example.org/ComparateurWS/compare"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ComparateurWS">
+    <wsdl:port binding="tns:ComparateurWSBinding" name="ComparateurWSSOAPPort">
+      <soap:address location="http://localhost:8080/ComparateurWS/services/ComparateurWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

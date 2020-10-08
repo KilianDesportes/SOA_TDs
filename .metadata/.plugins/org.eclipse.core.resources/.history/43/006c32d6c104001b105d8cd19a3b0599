@@ -1,0 +1,10 @@
+package org.example.www.comparateurws;
+
+public class TestComparateur {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

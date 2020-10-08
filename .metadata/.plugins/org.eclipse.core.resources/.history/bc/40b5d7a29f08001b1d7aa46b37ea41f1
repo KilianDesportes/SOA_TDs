@@ -1,0 +1,44 @@
+package fr.insa.mas.studentManagementMS;
+
+import java.util.ArrayList;
+
+import fr.insa.soa.RestProject.Binome;
+import fr.insa.soa.RestProject.Link;
+import fr.insa.soa.RestProject.Stage;
+
+public class Student {
+
+	
+	private int id;
+	private String lastName;
+	private String firstName;
+	
+	public Student() {
+		
+	}
+	
+	public int getID() {
+		return id;
+	}
+	
+	public void setID(int id) {
+		this.id = id;
+	}
+	
+	public String getLastName() {
+		return nom;
+	}
+	
+	public void setLastName(String nom) {
+		this.nom = nom;
+	}
+	
+	public String getFirstName() {
+		return prenom;
+	}
+	
+	public void setFirstName(String prenom) {
+		this.prenom = prenom;
+	}
+	
+}

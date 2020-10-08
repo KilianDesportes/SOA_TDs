@@ -1,0 +1,30 @@
+package fr.insa.soa.RestProject;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("etudiants")
+public class EtudiantRessource {
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Etudiant getEtudiants() {
+		Etudiant etudiant = new Etudiant();
+		etudiant.setNom("N");
+		etudiant.setPrenom("G");
+		return etudiant;
+	}
+	
+	@GET
+	@Path("/{idEtudiant}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Etudiant getEtudiant(@PathParam("idEtudiant") int id) {
+		Etudiant etudiant = new Etudiant();
+		etudiant.setNom("A");
+		etudiant.setPrenom("B");
+		return etudiant;
+	}
+}

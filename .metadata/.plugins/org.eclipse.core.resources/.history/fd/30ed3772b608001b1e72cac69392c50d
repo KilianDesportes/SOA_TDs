@@ -1,0 +1,40 @@
+package fr.insa.mas.studentManagementMS;
+
+import java.util.ArrayList;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import fr.insa.soa.RestDatabaseService.Task;
+
+@RestController
+public class StudentRessource {
+
+	private static ArrayList<Student> studentList = new ArrayList<Student>();
+	
+	@GetMapping(value="/students/{id}")
+	public Student infosStudent(@PathVariable int id) {
+		Student student = studentList.get(id);
+		return student;
+	}
+	
+	@PostMapping("/students")
+	public int studentNumber() {
+		Student student = new Student(id,"Rosa","Parks");
+		studentList.add(id, student);
+	}
+	
+	@GetMapping("/students")
+	public int studentNumber() {
+		return 200;
+	}
+	
+	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_XML_VALUE)
+	public Student xmlInfosStudents(@PathVariable int id) {
+		Student student = new Student(id,"Rosa","Parks");
+		return student;
+	}
+}

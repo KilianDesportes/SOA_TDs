@@ -1,0 +1,58 @@
+package fr.insa.soa.RestProject;
+
+import java.util.ArrayList;
+
+public class Etudiant {
+
+	private int id;
+	private Stage stage;
+	private String nom;
+	private String prenom;
+	private Binome binome;
+	private ArrayList<Link> links = new ArrayList<>();
+	
+	public String getNom() {
+		return nom;
+	}
+	
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	public String getPrenom() {
+		return prenom;
+	}
+	
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	public Binome getBinome() {
+		return binome;
+	}
+	
+	public void setBinome(Binome binome) {
+		this.binome = binome;
+	}
+	
+	public int getID() {
+		return id;
+	}
+	
+	public void setID(int id) {
+		this.id = id;
+	}
+	
+	public void addLink(String uri, String rel, String methode) {
+		Link newLink = new Link();
+		newLink.setLink(uri);
+		newLink.setRel(rel);
+		newLink.setMethode(methode);
+		links.add(newLink);
+	}
+	
+	public ArrayList<Link> getLinks(){
+		return links;
+	}
+	
+}

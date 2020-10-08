@@ -1,0 +1,27 @@
+package fr.insa.msa.StudentEvalService.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentInfos {
+
+	private int id;
+	private String birthDate;
+	private String lastName;
+	private String firstName;
+	
+	public StudentInfos(int id, String birthDate, String lastName, String firstName) {
+		this.id = id;
+		this.birthDate = birthDate;
+		this.lastName = lastName;
+		this.firstName = firstName;
+	}
+	
+	public List<Integer> getStudentList(){
+		return this.studentList;
+	}
+	
+	public void saddStudentToList(Integer studentId) {
+		this.studentList.add(studentId);
+	}
+}

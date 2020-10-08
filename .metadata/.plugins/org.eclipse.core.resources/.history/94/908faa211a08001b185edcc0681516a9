@@ -1,0 +1,59 @@
+package fr.insa.soa.RestDatabaseService;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("databaseope")
+public class DatabaseOperations {
+
+	private Database datab = new Database();
+
+	@GET
+	@Path("test")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String search() {
+		return "TEST";
+	}
+	
+	@GET
+	@Path("search/{idTask}")
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Task search(@PathParam("idTask") int id) {
+		return datab.searchTask(id);
+	}
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void add(Task task) {
+		datab.addTask(task);
+		System.out.println("added");
+		datab.printDatabase();
+	}
+
+	@DELETE
+	@Path("delete/{idTask}")
+	@Consumes(MediaType.TEXT_PLAIN)
+	public void delete(@PathParam("idTask") int id) {
+		datab.deleteTask(id);
+		System.out.println("deleted");
+		datab.printDatabase();
+	}
+
+	@PUT
+	@Path("update/{idTask}")
+	@Consumes(MediaType.APPLICATION_JSON,MediaType.TEXT_PLAIN)
+	public void update(Task task, @PathParam("idTask") int id) {
+		datab.deleteTask(id);
+		System.out.println("updated");
+		datab.printDatabase();
+	}
+
+}
